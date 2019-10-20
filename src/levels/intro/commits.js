@@ -11,7 +11,8 @@ exports.level = {
     'zh_CN': 'Git Commit',
     'zh_TW': '介紹 git commit ',
     'ru_RU': 'Знакомство с Git Commit ',
-    'uk': 'Знайомство з комітами в Git'
+    'uk': 'Знайомство з комітами в Git',
+    'pl': 'Wstęp do commitów',
   },
   "goalTreeString": "{\"branches\":{\"master\":{\"target\":\"C3\",\"id\":\"master\"}},\"commits\":{\"C0\":{\"parents\":[],\"id\":\"C0\",\"rootCommit\":true},\"C1\":{\"parents\":[\"C0\"],\"id\":\"C1\"},\"C2\":{\"parents\":[\"C1\"],\"id\":\"C2\"},\"C3\":{\"parents\":[\"C2\"],\"id\":\"C3\"}},\"HEAD\":{\"target\":\"master\",\"id\":\"HEAD\"}}",
   "solutionCommand": "git commit;git commit",
@@ -28,7 +29,8 @@ exports.level = {
     "ja"   : "'git commit'コマンドを2回打てば完成!",
     "ko": "'git commit'이라고 두 번 치세요!",
     "ru_RU": "Попробуй дважды выполнить команду 'git commit' ;)",
-    "uk": "Спробуй двічі виконати команду 'git commit' ;)"
+    "uk": "Спробуй двічі виконати команду 'git commit' ;)",
+    "pl": "Po prostu wpisz 'git commit' dwukrotnie aby zakończyć",
   },
   "disabledMap": {
     "git revert": true
@@ -543,6 +545,48 @@ exports.level = {
           "options": {
             "markdowns": [
               "Спробуй сам. Після того як це вікно закриється, зроби два коміти, щоб пройти цей рівень."
+            ]
+          }
+        }
+      ]
+    },
+    "pl": {
+      "childViews": [
+        {
+          "type": "ModalAlert",
+          "options": {
+            "markdowns": [
+              "## Commity w Git",
+              "Commit w repozytorium git utrwala obecny stan plików w Twoim katalogu. To jak gigantyczna operacja kopiuj i wklej ale dużo lepsza!",
+              "",
+              "Git zarządza commitami w sposób tak lekki jak to tylko możliwe, więc nie kopiuje bezmyślnie całego katalogu za każdym razem gdy robisz commit. Git może (kiedy to możliwe) skompresować commit jako zbiór zmian, tworząc tak zwaną \"delte\", z jednej wersji repozytorium w stosunku do następnej.",
+              "",
+              "Git również przechowuje historię o tym kiedy został zrobiony każdy commit. Dlatgo większość commitów ma przodka nad sobą -- zaznaczamy to strzałką w naszych wizualizacjach. Utrzymywanie historii jest bardzo przydatne dla wszystkich którzy pracują nad projektem!",
+              "",
+              "To dużo wiedzy na początek, póki co możesz myśleć o commicie jako utrwaleniu Twojego projektu. Commity są mało wymagające a przełączanie się między nimi bardzo szybkie!"
+            ]
+          }
+        },
+        {
+          "type": "GitDemonstrationView",
+          "options": {
+            "beforeMarkdowns": [
+              "Zobaczmy jak to wyglą w praktyce. Po prawej mamy wizualizację (małego) repozytorium. W tej chwili mamy w nim dwa commity, `C0`, i commit po nim `C1` który może mieć znaczące zmiany.,",
+              "",
+              "Kliknij przycisk poniżej aby stworzyć nowy commit",
+            ],
+            "afterMarkdowns": [
+              "Proszę Bardzo! Super! Właśnie wprowadzilismy zmiany w repozytorium i zapisaliśmy je jako commit. Commit który własnie zrobiliśmy ma przodka, `C1`, co wskazuje na podstawie którego commita został utworzony"
+            ],
+            "command": "git commit",
+            "beforeCommand": ""
+          }
+        },
+        {
+          "type": "ModalAlert",
+          "options": {
+            "markdowns": [
+              "Spróbuj samemu! Po zamknięciu tego okno zrób dwa commity aby ukończyć ten poziom"
             ]
           }
         }

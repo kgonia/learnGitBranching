@@ -133,4 +133,15 @@ exports.dialog = {
       ]
     }
   }],
+  'pl': [{
+    type: 'ModalAlert',
+    options: {
+      markdowns: [
+        '## Niezła robota!!',
+        '',
+        'Rozwiązałeś poziom używając *{numCommands}* komend; ',
+        'nasze rozwiązanie używa {best}.'
+      ]
+    }
+  }]
 };

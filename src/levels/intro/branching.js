@@ -13,7 +13,8 @@ exports.level = {
     "zh_CN": "Git Branch",
     "zh_TW": "建立 git branch",
     "ru_RU": "Ветвление в Git",
-    "uk": "Розгалуження в Git"
+    "uk": "Розгалуження в Git",
+    "pl": "Branche w Git",
   },
   "hint": {
     "en_US": "Make a new branch with \"git branch <branch-name>\" and check it out with \"git checkout <branch-name>\"",
@@ -27,7 +28,8 @@ exports.level = {
     "zh_TW": "用 'git branch [ branch 名稱]' 來建立 branch，用 'git checkout [ branch 名稱]' 切換到該 branch",
     "ko": "\"git branch [브랜치명]\"으로 새 브랜치를 만들고, \"git checkout [브랜치명]\"로 그 브랜치로 이동하세요",
     "ru_RU": "Создай новую ветку при помощи \"git branch [name]\" и перейди на неё при помощи \"git checkout [name]\"",
-    "uk": "Створи нову гілку за допомогою \"git branch [ім’я]\" й перейди на неї за допомогою \"git checkout [ім’я]\""
+    "uk": "Створи нову гілку за допомогою \"git branch [ім’я]\" й перейди на неї за допомогою \"git checkout [ім’я]\"",
+    "pl": "Stwórz nowy branch komendą \"git branch <branch-name>\" i przełącz się na niego komendą \"git checkout <branch-name>\"",
   },
   "disabledMap": {
     "git revert": true
@@ -969,6 +971,88 @@ exports.level = {
             "markdowns": [
               "Тепер ти готовий до створення гілок. Як тільки це вікно пропаде, ",
               "зроби нову гілку з назвою `bugFix` та перейди на неї."
+            ]
+          }
+        }
+      ]
+    },
+    "pl": {
+      "childViews": [
+        {
+          "type": "ModalAlert",
+          "options": {
+            "markdowns": [
+              "## Branche w Git ",
+              "",
+              "Branche również są nieprawdopodbnie lekkie i szybkie. Wskazują one po prostu na konkretny commit -- nic więcej. Dlatego tylu entyzjastów gita powtarza jak mantrę:",
+              "",
+              "```",
+              "twórz branche wcześnie, i twórz branche często",
+              "```",
+              "",
+              "Ponieważ tworzenie branczy nie powoduje zajmowania dodatkowej pamięci, jest łatwiej dzielić Twoją pracę na mniejsze częsci niż mieć ogromne branche.",
+              "",
+              "Kiedy zmiksujemy branche i commity zobaczymy jak te dwie funkcjonalności się łączą. Na razie po prostu zapamietaj, tworząc branch mówisz \"Chcę dołączyć pracę włożoną w ten commit i wszystkie wcześniejsze commity.\""
+            ]
+          }
+        },
+        {
+          "type": "GitDemonstrationView",
+          "options": {
+            "beforeMarkdowns": [
+              "Zobaczmy jak branche wygladają w praktyce",
+              "",
+              "Stworzymy nowy branch o nazwie `newImage`"
+            ],
+            "afterMarkdowns": [
+              "Już, to wszystko co potrzebne do stworzenia nowego brancha. Branch `newImage` odnosi się do commitu `C1`"
+            ],
+            "command": "git branch newImage",
+            "beforeCommand": ""
+          }
+        },
+        {
+          "type": "GitDemonstrationView",
+          "options": {
+            "beforeMarkdowns": [
+              "Dodajmy trochę pracy do tego brancha. Kliknij przycisk poniżej"
+            ],
+            "afterMarkdowns": [
+              "Oh nie! Dokonaliśmy zmian na branchu `master` a nie na `newImage`! To przez to, że nie przełączyliśmy nie na nowy branch, dlatego gwiazdka była na branchu `master`"
+            ],
+            "command": "git commit",
+            "beforeCommand": "git branch newImage"
+          }
+        },
+        {
+          "type": "GitDemonstrationView",
+          "options": {
+            "beforeMarkdowns": [
+              "Powiedzmy gitowi, że chcemy przejsć na inny branch",
+              "",
+              "```",
+              "git checkout <name>",
+              "```",
+              "",
+              "Ta komenda przełącza nas na nowy branch przed commitowaniem naszych zmian"
+            ],
+            "afterMarkdowns": [
+              "Załatwione! Nasze zmiany są na nowym branchu"
+            ],
+            "command": "git checkout newImage; git commit",
+            "beforeCommand": "git branch newImage"
+          }
+        },
+        {
+          "type": "ModalAlert",
+          "options": {
+            "markdowns": [
+              "Ok! Jesteś gotowy poćwiczyć tworzenie branczy. Gdy te okno się zamknie,",
+              "stwórz nowy branch o nazwie `bugFix` i przejdź na ten branch.",
+              "",
+              "Przy okazji, możesz użyć skrótu: jeśli chcesz stworzyć nowy ",
+              "branch i przejść na niego w tym samym czasie, możesz poprostu ",
+              "wpisać `git checkout -b [twojanazwabrancha]`."
             ]
           }
         }

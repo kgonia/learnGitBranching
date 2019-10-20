@@ -229,4 +229,23 @@ exports.dialog = {
       ]
     }
   }],
+  'pl': [{
+    type: 'ModalAlert',
+    options: {
+      markdowns: [
+        '## Witaj w budownicznym poziomów!',
+        '',
+        'Tu znajdziesz opis głównych kroków:',
+        '',
+        '  * SAkonfiguruje początkowe środowisko używając komend gita',
+        '  * Zdefiniuj początkową strukturę gałęzi używając ```define start```',
+        '  * Podaj serię komend które tworza optymalne rozwiązanie',
+        '  * Zdefiniuj cel gałęzi ```define goal```. Zdefiniowanie celu oznacza zdefiniowanie rozwiązania',
+        '  * Opcjonalnie zdefiniuj podpowiedź używając ```define hint```',
+        '  * Zmień nazwe używając ```define name```',
+        '  * Opcjonalnie zdefiniu początkową wiadomość używając ```edit dialog```',
+        '  * Użyj komendy ```finish``` aby otrzymać wynik Twojego poziomu w formacie JSON!'
+      ]
+    }
+  }],
 };

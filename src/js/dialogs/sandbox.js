@@ -557,5 +557,28 @@ exports.dialog = {
         '[це спеціальне посилання.](https://pcottle.github.io/learnGitBranching/?NODEMO)'
       ]
     }
-  }]
+  }],
+  'pl': [{
+    type: 'ModalAlert',
+    options: {
+      markdowns: [
+        '## Witaj w Learn Git Branching',
+        '',
+        'Zainteresowany nauką Gita? Trafiłeś we właściwe miejsce! ',
+        '"Learn Git Branching" jest najbardziej wizualnym i interaktywnym sposobem na naukę Gita ',
+        'w sieci; Twoim wyzwaniem będą ekscytujące poziomy, poznasz prezentowane krok po kroku ',
+        'zaawansowane funkcje, i być może, przy okazji będziesz się świetnie bawić.',
+        '',
+        'Po zamknięciu tego okna zobaczysz wiele poziomów które mamy do zaoferowania. Jesli jesteś ',
+        'początkujący po prostu zacznij od pierwszej lekcji, Jeśli znasz już podstawy Gita ',
+        'spróbuj któregoś z bardziej wymagających poziomów.',
+        '',
+        'Możesz zobaczyć wszystkie dostępne komendy wpisując `show commands` w terminalu',
+        '',
+        'PS: Chcesz przejść prosto do trybu piaskownicy?',
+        'Spróbuj tutaj ',
+        '[Kliknij w ten link](https://pcottle.github.io/learnGitBranching/?NODEMO)'
+      ]
+    }
+  }],
 };

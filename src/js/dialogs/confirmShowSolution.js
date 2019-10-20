@@ -114,6 +114,16 @@ exports.dialog = {
         'Я вірю в тебе! Ти впораєшся!'
       ]
     }
+  }],
+  'pl': [{
+    type: 'ModalAlert',
+    options: {
+      markdowns: [
+        '## Jesteś pewny, że chcesz zobaczyć rozwiązanie?',
+        '',
+        'Wierzę w Ciebie! Możesz to zrobić!'
+      ]
+    }
   }]
 };
 
