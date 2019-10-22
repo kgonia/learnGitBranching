@@ -13,7 +13,8 @@ exports.level = {
     "zh_CN": "Git Merge",
     "zh_TW": "git 中的 merge",
     "ru_RU": "Слияния веток в Git",
-    "uk": "Злиття гілок в Git"
+    "uk": "Злиття гілок в Git",
+    "pl": "Mergowanie w Git",
   },
   "hint": {
     "en_US": "Remember to commit in the order specified (bugFix before master)",
@@ -27,7 +28,8 @@ exports.level = {
     "zh_TW": "記住按指定的順序 commit（bugFix 比 master 優先）",
     "ko": "말씀드린 순서대로 커밋해주세요 (bugFix에 먼저 커밋하고 master에 커밋)",
     "ru_RU": "Не забудь делать коммиты в правильном порядке (сначала bugFix, потом master)",
-    "uk": "Не забудь робити коміти в правильному порядку (спочатку bugFix, а вже потім master)"
+    "uk": "Не забудь робити коміти в правильному порядку (спочатку bugFix, а вже потім master)",
+    "pl": "Pamiętaj żeby zrobić commit w określonej kolejności (bugFix przed master)",
   },
   "disabledMap": {
     "git revert": true
@@ -860,6 +862,75 @@ exports.level = {
           }
         }
       ]
-    }
+    },
+    "pl": {
+      "childViews": [
+        {
+          "type": "ModalAlert",
+          "options": {
+            "markdowns": [
+              "## Branche i Mergowanie",
+              "",
+              "Super! Wiemy już jak commitować i jak tworzyć branche. Teraz musimy się dowiedzieć jak połączyć pracę z dwóch róznych branchy. To pozwoli nam tworzyć nowy branch, stworzyć nową funkcjonalność a potem połączyć to z resztą kodu.",
+              "",
+              "Pierwszym sposobem na włączenie Twojej pracy do reszty kodu jest `git merge`. Mergowanie w Git tworzy specjalny commit który ma dwóch przodków. Commit z dwoma przodkami oznacza \"Chcę połączyć cały mój kod z jednego przodka i drugiego przodka, i wszystkiego co było przed nimi\"",
+              "",
+              "Wszystko się rozjaśni gdy spojrzymy na wizualizację, przejdźmy do nastepnego widoku"
+            ]
+          }
+        },
+        {
+          "type": "GitDemonstrationView",
+          "options": {
+            "beforeMarkdowns": [
+              "Mamy tutaj dwa branche; Każdy z nich ma commit który jest unikalny. To oznacza, że nie mamy bracha który zawierałby cały kod i wykonaną pracę której dokonaliśmy w repozytorium. Naprawmy to stosując merge.",
+              "",
+              "Połączymy robiąc `merge` brancha `bugFix` do brancha `master`"
+            ],
+            "afterMarkdowns": [
+              "Łał! Widziałeś to? Przede wszystkim, branch `master` wskazuje teraz na commit który ma dwóch rodziców. Jeśli podążysz za strzałkami w górę drzewa z commitami od brancha `master`, przejdziesz przez każdy commit aż do początku drzewa. To oznacza, że `master` zawiera cały kod i wykonaną pracę",
+              "",
+              "Zauważyłeś, że zmienił się również kolor commitu? Aby pomóc Ci w nauce, dorzuciłem trochę kolorów. Każdy branch ma swój kolor. Każdy commit przyjmuje kolor który jest mieszanką wszystkich branchy które zawierają ten commit.",
+              "",
+              "Widzimy, że kolor brancha `master` jest we wszystkich commitach, ale kolor brancha 'bugFix już nie. Naprawmy to..."
+            ],
+            "command": "git merge bugFix",
+            "beforeCommand": "git checkout -b bugFix; git commit; git checkout master; git commit"
+          }
+        },
+        {
+          "type": "GitDemonstrationView",
+          "options": {
+            "beforeMarkdowns": [
+              "Let's merge `master` into `bugFix`:"
+            ],
+            "afterMarkdowns": [
+              "Ponieważ `bugFix` był przodkiem brancha `master`, git nie musiał wykonać żadnej pracy; po prostu przesunął `bugFix` do tego samego commitu na który wskazuje branch `master`.",
+              "",
+              "Teraz wszystkie commity są w tym samym kolorze, co oznacza że każdy branch zawiera cały kod i wykonaną pracę! Super!"
+            ],
+            "command": "git checkout bugFix; git merge master",
+            "beforeCommand": "git checkout -b bugFix; git commit; git checkout master; git commit; git merge bugFix"
+          }
+        },
+        {
+          "type": "ModalAlert",
+          "options": {
+            "markdowns": [
+              "Aby ukończyć ten poziom, wykonaj nastepujące kroki:",
+              "",
+              "* Stwórz nowy branch o nazwie `bugFix`",
+              "* Przejdź na branch `bugFix` używając komendy `git checkout bugFix`",
+              "* Wykonaj commit",
+              "* Wróć na branch `master` używając komendy `git checkout`",
+              "* Wykonaj commit kolejny raz",
+              "* Dodaj zmiany z brancha `bugFix` do `master` używając komendy `git merge`",
+              "",
+              "*Pamiętaj, zawsze możesz otworzyć te okno komendą \"objective\"!*"
+            ]
+          }
+        }
+      ]
+    },
   }
 };
