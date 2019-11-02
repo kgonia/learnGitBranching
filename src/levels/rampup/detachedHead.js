@@ -14,7 +14,8 @@ exports.level = {
     "ja"   : "HEADの分離",
     "ru_RU": "Теряем голову, или detached HEAD",
 	  "ko"   : "HEAD 분리하기",
-    "uk": "Втрачаємо голову чи detached HEAD"
+    "uk": "Втрачаємо голову чи detached HEAD",
+    "pl": "Odłącz swoją głowę"
   },
   "hint": {
     "en_US": "Use the label (hash) on the commit for help!",
@@ -28,7 +29,8 @@ exports.level = {
     "zh_CN": "使用提交记录上的标签（哈希值）来指定提交记录！",
     "ru_RU": "Ориентируйся по идентификаторам (hash) коммитов.",
     "ko"   : "커밋에 있는 라벨(hash)을 활용하세요!",
-    "uk": "Орієнтуйся по індентифікаторам (hash) комітів."
+    "uk": "Орієнтуйся по індентифікаторам (hash) комітів.",
+    "pl": "Użyj etykiety (hash) przy commicie żeby sobie pomóc",
   },
   "startDialog": {
     "en_US": {
@@ -962,6 +964,84 @@ exports.level = {
           }
         }
       ]
-    }
+    },
+    "pl": {
+      "childViews": [
+        {
+          "type": "ModalAlert",
+          "options": {
+            "markdowns": [
+              "## Poruszanie się w Git",
+              "",
+              "Zanim przejdziemy do bardziej zaawansowaych funkcjonalności w Gicie, ważne żebyś zrozumiał rózne sposoby poruszania sie przez drzewo commitów które opisuje Twój projekt",
+              "",
+              "Kiedy poruszanie się będzie dla Ciebie komfortowe, Twoje umiejetności przu używaniu innych komend zostaną wzmocnione!",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ]
+          }
+        },
+        {
+          "type": "ModalAlert",
+          "options": {
+            "markdowns": [
+              "## Głowa (HEAD)",
+              "",
+              "Na początek porozmawiajmy o \"HEAD\". HEAD to symboliczna nazwa dla obecnego commitu - w zasadzie jest to commit, nad którym pracujesz",
+              "",
+              "HEAD zawsze wskazuje na ostatni commit w naszym drzewie. Większość komend które wprowadzaja zmiany w naszym drzewie zaczynają od zmiany HEAD",
+              "",
+              "Zazwyczaj HEAD wskaujze na nazwę brancha (np. bugFix). Kiedy tworzysz commit, po zatwierdzeniu status brancha bugFix jest zmieniany i ta zmiana jest widoczna przez HEAD."
+            ]
+          }
+        },
+        {
+          "type": "GitDemonstrationView",
+          "options": {
+            "beforeMarkdowns": [
+              "Sprawdźmy to w kacji. Ujawnimy HEAD przed i pod wykonaniu commitu."
+            ],
+            "afterMarkdowns": [
+              "Zobacz! HEAD ukrywał się cały czas pod spodem naszego brancha `master`"
+            ],
+            "command": "git checkout C1; git checkout master; git commit; git checkout C2",
+            "beforeCommand": ""
+          }
+        },
+        {
+          "type": "GitDemonstrationView",
+          "options": {
+            "beforeMarkdowns": [
+              "### Odłączony HEAD",
+              "",
+              "Odłączony HEAD oznacza, że wskazuje na commit zamiast na branch. Tak to wyglądało wcześniej:",
+              "",
+              "HEAD -> master -> C1",
+              ""
+            ],
+            "afterMarkdowns": [
+              "A teraz tak:",
+              "",
+              "HEAD -> C1"
+            ],
+            "command": "git checkout C1",
+            "beforeCommand": ""
+          }
+        },
+        {
+          "type": "ModalAlert",
+          "options": {
+            "markdowns": [
+              "Aby ukończyć ten poziom, odłącza HEAD od `bugFix` i podłącz do commitu.",
+              "",
+              "Wskaż commit używając jego hashu. Hash dla każdego commitu jest wyświetlany w kółku które reprezentuje commit."
+            ]
+          }
+        }
+      ]
+    },
   }
 };

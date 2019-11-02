@@ -15,7 +15,8 @@ exports.level = {
     "zh_CN": "撤销变更",
     "zh_TW": "在 git 中取消修改 ",
     "ru_RU": "Отмена изменений в Git",
-    "uk": "Відміна змін в Git"
+    "uk": "Відміна змін в Git",
+    "pl": "Cofanie zmian w Git",
   },
   "hint": {
     "en_US": "Notice that revert and reset take different arguments.",
@@ -29,7 +30,8 @@ exports.level = {
     "ko": "revert와 reset이 받는 인자가 다름을 기억하세요",
     "ja"   : "revertとresetとで引数が異なることに注意。",
     "ru_RU": "Обрати внимание, что revert и reset принимают разные параметры.",
-    "uk": "Зверни увагу на те що revert та reset приймають різні параметри"
+    "uk": "Зверни увагу на те що revert та reset приймають різні параметри",
+    "pl": "Zauważ że revert i reset przyjmują inne argumenty",
   },
   "startDialog": {
     "en_US": {
@@ -789,6 +791,70 @@ exports.level = {
           }
         }
       ]
-    }
+    },
+    "pl": {
+      "childViews": [
+        {
+          "type": "ModalAlert",
+          "options": {
+            "markdowns": [
+              "## Cofanie zmian w Git",
+              "",
+              "Jest wiele sposobów na cofnięcie zmian w Git, Tak jak w przypadku commitów, cofanie zmian w Git pozwala zarówno na małe operacje (przemieszczanie pojedynczych plików lub ich części), jak i na duże operacje (w tym przypadku zmiany są rzeczywiście odwracane). Skupimy się na tym drugim",
+              "",
+              "Są dwa główne sposoby odwrócenia zmian w Git -- Jedną jest użycie `git reset` a drugą  użycie`git revert`. Przyjrzymy się obu w nasepnym oknie,
+              ""
+            ]
+          }
+        },
+        {
+          "type": "GitDemonstrationView",
+          "options": {
+            "beforeMarkdowns": [
+              "## Git Reset",
+              "",
+              "`git reset` odwraca zmiany poprzez zmianę odniesienia brancha do starszego commitu. Możesz o tym mysleć jak o \"przepisywaniu historii;\" `git reset` przesunie branch do tyłu tak jakby commity nigfy nie zostały wykonane.",
+              "",
+              "Zobaczmy jak to wygląda:"
+            ],
+            "afterMarkdowns": [
+              "Nieźle! Git przesunął referencję brancha spowrotem do `C1`; Teraz nasz lokalny branch wygląda tak jakby commitu `C2` nigdy nie było."
+            ],
+            "command": "git reset HEAD~1",
+            "beforeCommand": "git commit"
+          }
+        },
+        {
+          "type": "GitDemonstrationView",
+          "options": {
+            "beforeMarkdowns": [
+              "## Git Revert",
+              "",
+              "Resetowanie działa super na Twojej lokalnej maszynie, jednak \"przepisywanie historii\" nie działa na zewnętrznych branchach z których korzystają inni",
+              "",
+              "Aby usunać zmiany i *podzielić się* tą zmianą z innymi, musimy użyć komendy `git revert`. Zobaczmy to w praktyce"
+            ],
+            "afterMarkdowns": [
+              "Dziwne, nowy commit pojawił się poniżej commitu który chcieliśmy cofnąć. Stało się tak ponieważ nowy commit `C2' wprowdził *zmiany* -- te zmiany to odwrócenie wszystkiego co było w commicie `C2`.",
+              "",
+              "Używając opcji revert, możesz wypchać swoje zmiany i podzielić się nimi z innymi"
+            ],
+            "command": "git revert HEAD",
+            "beforeCommand": "git commit"
+          }
+        },
+        {
+          "type": "ModalAlert",
+          "options": {
+            "markdowns": [
+              "Aby ukończyć ten poziom, odwróć ostatni commit na branchach `local` i `pushed`. Cofniesz dwa commity (po jednym na branch) ",
+              "",
+              "Pamiętaj że branch `pushed` jest branchem zdalnym, natomiast `local` jest branchem lokalnym -- to powinno pomóc wybrać Ci sposób w jaki wykonać zadanie"
+            ]
+          }
+        }
+      ]
+    },
+
   }
 };

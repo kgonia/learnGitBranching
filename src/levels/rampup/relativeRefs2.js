@@ -14,7 +14,8 @@ exports.level = {
     "ja"   : "このレベルをクリアするには少なくとも一つの直接リファレンス（hash）を使用する必要があります",
     "ru_RU": "Понадобится использовать как минимум одну прямую ссылку (хеш), чтобы пройти этот уровень",
     "ko"   : "이번 레벨을 완료하려면 최소 한번은 직접 참조(해시)를 사용해야 합니다.",
-    "uk": "Тобі потрібно використати як мінімум одне пряме посилання (хеш) щоб пройти цей рівень"
+    "uk": "Тобі потрібно використати як мінімум одне пряме посилання (хеш) щоб пройти цей рівень",
+    "pl": "Aby ukończyć ten poziom, musisz użyć co najmniej jednego bezpośredniego odwołania (skrótu)",
   },
   "name": {
     "en_US": "Relative Refs #2 (~)",
@@ -28,7 +29,8 @@ exports.level = {
     "zh_TW": "相對引用二（~）",
     "ru_RU": 'Относительные ссылки №2',
     "ko"   : "상대 참조 #2 (~)",
-    "uk": "Відносні посилання №2"
+    "uk": "Відносні посилання №2",
+    "pl": "Względne odniesienia #2 (~)",
   },
   "startDialog": {
     "en_US": {
@@ -841,6 +843,77 @@ exports.level = {
           }
         }
       ]
-    }
+    },
+    "pl": {
+      "childViews": [
+        {
+          "type": "ModalAlert",
+          "options": {
+            "markdowns": [
+              "### Perator \"~\"",
+              "",
+              "Powiedzmy, że chcesz się przesunąć wiele razy w górę w drzewie. Pisanie `^` kilka razy może być żmudne, więc Git ma również operator tylda (~).",
+              "",
+              "",
+              "Operator tyldy (opcjonalnie) przyjmuje liczbę, która określa liczbę rodziców o którą chccesz przejść wyżej. Zobaczmy to w akcji"
+            ]
+          }
+        },
+        {
+          "type": "GitDemonstrationView",
+          "options": {
+            "beforeMarkdowns": [
+              "Określmy liczby commit używając `~`."
+            ],
+            "afterMarkdowns": [
+              "Już! Przynaj -- względne odniesienia są super"
+            ],
+            "command": "git checkout HEAD~4",
+            "beforeCommand": "git commit; git commit; git commit"
+          }
+        },
+        {
+          "type": "ModalAlert",
+          "options": {
+            "markdowns": [
+              "### Wymuszanie Branchy",
+              "",
+              "Jesteś teraz ekspertem od względnych odniesień, teraz użyjmy ich do czegoś przydatnego.",
+              "",
+              "One of the most common ways I use relative refs is to move branches around. You can directly reassign a branch to a commit with the `-f` option. So something like:",
+              "Jednym z najczęstszych sposobów używania względnych odniesień jest tworzenie branchy. Możesz bezpośrednio przypisać branch do commitu za pomocą opcji `-f`. W taki sposób:",
+              "",
+              "`git branch -f master HEAD~3`",
+              "",
+              "przesuwamy (siłą) branch master o trzech przodków za pozcyję HEAD."
+            ]
+          }
+        },
+        {
+          "type": "GitDemonstrationView",
+          "options": {
+            "beforeMarkdowns": [
+              "Sprawdźmy poprzednią komendę w akcji"
+            ],
+            "afterMarkdowns": [
+              "Już! Względne odniesienia dają nam prosty sposób aby wskazać commit `C1` natomiast wymuszanie brancha (`-f`) daje nam możliwość szybkiego przeniesnia brancha w to miejsce."
+            ],
+            "command": "git branch -f master HEAD~3",
+            "beforeCommand": "git commit; git commit; git commit; git checkout -b bugFix"
+          }
+        },
+        {
+          "type": "ModalAlert",
+          "options": {
+            "markdowns": [
+              "Teraz widziałeś użycie względnych odniesień i wymuszenia branchy razem, użyjmy tego do ukończeni poziomu",
+              "",
+              "Aby ukończyć ten poziom, przesuń `HEAD`, `master`, i `bugFix` do docelowych miejsc tak jak w wizualizacji."
+            ]
+          }
+        }
+      ]
+    },
+
   }
 };

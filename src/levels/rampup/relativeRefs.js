@@ -14,7 +14,8 @@ exports.level = {
     "de_DE": "Relative Referenzen (^)",
     "ru_RU": "Относительные ссылки (^)",
     "ko"   : "상대 참조 (^) (Relative Refs)",
-    "uk": "Відносні посилання"
+    "uk": "Відносні посилання",
+    "pl": "Względne odniesienia (^)",
   },
   "hint": {
     "en_US": "Remember the Caret (^) operator!",
@@ -28,7 +29,8 @@ exports.level = {
     "zh_TW": "不要忘記插入（^）符號！",
     "ru_RU": "Не забудь оператор `^`",
     "ko"   : "(^)연산자를 기억하세요!",
-    "uk": "Не забудь оператор `^`"
+    "uk": "Не забудь оператор `^`",
+    "pl": "Pamiętaj o operatorze (^)"
   },
   "startDialog": {
     "en_US": {
@@ -930,6 +932,83 @@ exports.level = {
           }
         }
       ]
-    }
+    },
+    "pl": {
+      "childViews": [
+        {
+          "type": "ModalAlert",
+          "options": {
+            "markdowns": [
+              "## Względne odniesienia (Relative Refs)",
+              "",
+              "Poruszanie się w repozytorium poprzez używanie hashy może być trochę nedne. W prawdzim świecie nie widzisz ładnej wizualizacji commitów w terminalu, więc musisz użyć komendy `git log` aby zobaczyć hash.",
+              "",
+              "Ponadto, hashe w prawdziwym świecie są zazwyczaj dużo dłuższe. Dla przykładu, hash commitu z poiprzedniego zadania to `fed2da64c0efc5293610bdd892f82a58e8cbc5d8`. Nie jest to coś co łatwo powiedzieć...",
+              "",
+              "Plusem jest to, że Git jest mądry jeśli chodzi o hashe. Wymaga od Ciebie tylko tyle znaków ile pozwoli na unikalną identyfikację commitu. Więc możesz pisać `fed2` zamiast tego długiego tekstu powyżej."
+            ]
+          }
+        },
+        {
+          "type": "ModalAlert",
+          "options": {
+            "markdowns": [
+              "Tak jak powiedziałem, okreslanie commitów po ich hashach nie jest wygodne, dlatego Git ma względne odniesienia. Sa super!",
+              "",
+              "Używają względnych odniesień, możesz zacząć w miejscu łatwym do zapamiętania (jak brach `bugFix` lub `HEAD`) i zacząć pracę z tego miesjca",
+              "",
+              "Względne commity są poteżne, wprowadzimy tutaj dwa proste sposoby:",
+              "",
+              "* Poruszanie się jeden commit do góry używając `^`",
+              "* Poruszanie się w dół x razy używająx `~<x>`"
+            ]
+          }
+        },
+        {
+          "type": "GitDemonstrationView",
+          "options": {
+            "beforeMarkdowns": [
+              "Przyjrzyjmy się wcześniej temu (^) operatorowi. Za każdym razem gdy dodasz go do referancyjnej nazwy, mówisz Gitowi - znajdź rodzice tego commitu.",
+              "",
+              "So saying `master^` is equivalent to \"the first parent of `master`\".",
+              "Więc `master^` jest równe \"pierwszy rodzic brancha `master`\".",
+              "",
+              "`master^^` jest dziadkiem (drugi poziom przodków) brancha `master`",
+              "",
+              "Przestawmy się na commit powyżej brancha master"
+            ],
+            "afterMarkdowns": [
+              "Boom! Zrobione. Dużo prostrze niż pisanie hash commitu"
+            ],
+            "command": "git checkout master^",
+            "beforeCommand": "git commit"
+          }
+        },
+        {
+          "type": "GitDemonstrationView",
+          "options": {
+            "beforeMarkdowns": [
+              "Możesz również wskazać `HEAD` jako referencję. Uzyjmy ego kilka razy aby poruszać się w górę drzewa"
+            ],
+            "afterMarkdowns": [
+              "Bułka z masłem! Możemy poruszać się wstecz w czasie używając `HEAD^`"
+            ],
+            "command": "git checkout C3; git checkout HEAD^; git checkout HEAD^; git checkout HEAD^",
+            "beforeCommand": "git commit; git commit"
+          }
+        },
+        {
+          "type": "ModalAlert",
+          "options": {
+            "markdowns": [
+              "Aby ukończyć ten poziom, przełącz się na rodzica commit z brancha `bugFix`. To spowoduje wejście w stan detached `HEAD`",
+              "",
+              "Możesz podać hash jeśli chcesz, ale spróbuj użyć względnych odniesień!"
+            ]
+          }
+        }
+      ]
+    },
+
   }
 };
