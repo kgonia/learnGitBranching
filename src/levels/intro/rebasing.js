@@ -13,7 +13,8 @@ exports.level = {
     "zh_CN": "Git Rebase",
     "zh_TW": "介紹 rebase",
     "ru_RU": "Введение в rebase",
-    "uk": "Знайомство з rebase"
+    "uk": "Знайомство з rebase",
+    "pl": "Wstęp do rebase",
   },
   "hint": {
     "en_US": "Make sure you commit from bugFix first",
@@ -27,7 +28,8 @@ exports.level = {
     "zh_CN": "先在 bugFix 分支上进行提交",
     "zh_TW": "你要先在 bugFix branch 進行 commit",
     "ru_RU": "Убедись, что сделал коммит в ветке bugFix",
-    "uk": "Впевнись, що зробив коміт в гілці bugFix"
+    "uk": "Впевнись, що зробив коміт в гілці bugFix",
+    "pl": "Upewnij się, że tworzysz commit z brancha bugFix",
   },
   "disabledMap": {
     "git revert": true
@@ -830,6 +832,73 @@ exports.level = {
               "* Зачекауть bugFix знову й заребейсь його на master",
               "",
               "Нехай щастить!"
+            ]
+          }
+        }
+      ]
+    },
+    "pl": {
+      "childViews": [
+        {
+          "type": "ModalAlert",
+          "options": {
+            "markdowns": [
+              "## Git Rebase",
+              "",
+              "Drugim sposobem na połaczenie kodu z różnych branchy jest wykonanie *rebase*. Polecenie rebase bierze kilka commitów, \"copies\" je i umieszcza je w innym miejscu",
+              "",
+              "Być może brzmi to dziwnie ale rebase ma swooje zalety. Może być użyty to stworzenia ładnej liniowej struktury commitów. Historia commitów w repozytorium będzie dużo czytleniejsza gdyby używać tylko polecenia rebase",
+              "",
+              "Sprawdźmy to w praktyce..."
+            ]
+          }
+        },
+        {
+          "type": "GitDemonstrationView",
+          "options": {
+            "beforeMarkdowns": [
+              "Ponownie pracujemy z dwoma branchami. Zauważ że obecnie znajdujemy się na branchu bugFix (zwróć uwagę na gwiazdkę)",
+              "",
+              "Chcemy przenieść nasz kod z brancha bugFix prosto do brancha master. Będzie to wyglądało jakbyśmy implementowali dwie funkcjonalności po kolei, gdy tak naprawdę były tworzone w tym samym czasie.",
+              "",
+              "Zróbmy to komendą `git rebase`"
+            ],
+            "afterMarkdowns": [
+              "Super! Cała nasza praca z brancha bugFix jest na górze brancha master i uzyskaliśmy ładną liniową sekwencję commitów",
+              "",
+              "Zauważ że commit C3 wciąż gdzieś istnieje (ma wyblakły wygląd na drzewie), natomiast C3' jest \"kopią\" ktorą przenieślimy na branch master",
+              "",
+              "Jedynym problemem jest to, że master również nie został zaktualizowany, zróbmy to teraz ..."
+            ],
+            "command": "git rebase master",
+            "beforeCommand": "git commit; git checkout -b bugFix C1; git commit"
+          }
+        },
+        {
+          "type": "GitDemonstrationView",
+          "options": {
+            "beforeMarkdowns": [
+              "Przejzmy teraz na branch master. Przejdźmy dalej i zróbmy rebase na `bugFix` ..."
+            ],
+            "afterMarkdowns": [
+              "Już! Ponieważ `master` był przodkiem brancha `bugFix`, git po prostu przesunął wskaźnik do przodu w naszej historii"
+            ],
+            "command": "git rebase bugFix",
+            "beforeCommand": "git commit; git checkout -b bugFix C1; git commit; git rebase master; git checkout master"
+          }
+        },
+        {
+          "type": "ModalAlert",
+          "options": {
+            "markdowns": [
+              "Aby ukonczyć ten poziom, wykonaj polecenia",
+              "",
+              "* Stwórz nowy branch o nazwie `bugFix`",
+              "* Zrób jeden commit",
+              "* Wróć na branch master i wykonaj commit",
+              "* Przejdź na bugFix jeszcze raz i wykonaj rebase na master",
+              "",
+              "Powodzenia!"
             ]
           }
         }
