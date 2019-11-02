@@ -14,7 +14,8 @@ exports.level = {
     "zh_TW": "git tag",
     "ru_RU": "git tag",
     "ko"   : "Git 태그",
-    "uk"   : "Git Tags"
+    "uk"   : "Git Tags",
+    "pl"   : "Tagi w git",
   },
   "hint": {
     "en_US": "you can either check out the commit directly or simply checkout the tag!",
@@ -28,7 +29,8 @@ exports.level = {
     "zh_CN": "你可以直接 checkout 到 commit 上，或是简单地 checkout 到 tag 上",
     "ru_RU": "Можно сделать checkout напрямую на коммит или же на тег",
     "ko"   : "커밋을 직접 또는 태그를 이용해서 체크아웃할수 있습니다!",
-    "uk"   : "ти можеш або зробити checkout коміта напряму чи просто зачекаутити таг!"
+    "uk"   : "ти можеш або зробити checkout коміта напряму чи просто зачекаутити таг!",
+    "pl"   : "Możesz bezpośrednio przełączyć się na commit lub po prostu przełączyć się na tag",
   },
   "startDialog": {
     "en_US": {
@@ -654,6 +656,60 @@ exports.level = {
           }
         }
       ]
-    }
+    },
+    "pl": {
+      "childViews": [
+        {
+          "type": "ModalAlert",
+          "options": {
+            "markdowns": [
+              "## Git Tags",
+              "",
+              "",
+              "Jak dowiedziałeś się z poprzednich lekcji, branche są łatwe do przenoszenia i czesto wskazują na różne commity na których zakończona jest jakaś praca. Branche można łatwo zmienić, często są tymczasowe i zawsze się zmieniają ",
+              "",
+              "W takim wypadku, możesz się zastanawić czy jest sposób aby *permanetnie* zaznaczyć jakiś punkt w historii Twojego projektu? W przypadku rzeczy takich jak główne wydania aplikacji i duże merge - czy jest sposób aby oznaczyć te commity w sposób permanentny?",
+              ""
+            ]
+          }
+        },
+        {
+          "type": "ModalAlert",
+          "options": {
+            "markdowns": [
+              "Oczywiście, że jest! Właśnie do tego służą tagi -- pernamentnie oznaczają \"kamienie milowe\" do których można się odnosić tak samo jak do branchy.",
+              "",
+              "Najważniejsze, tagi nigdy nie zmieniają swojej pozycji w miare przyrostu commitów. Nie możesz przełączyć się na tag i kontynuować pracy na tagu - tagi są jak kotwice przytwierdzone do commitu i wskazują na konkretne miejsce.",
+              "",
+              "Sprawdźmy jak to wygląda w praktyce"
+            ]
+          }
+        },
+        {
+          "type": "GitDemonstrationView",
+          "options": {
+            "beforeMarkdowns": [
+              "Spróbujmy stworzyć tag dla `C1` - to wersja naszego pierwszego prototypu"
+            ],
+            "afterMarkdowns": [
+              "Już! Całkiem proste. Tag nosi nazwę `v1` i wskazuje na commit `C1`. Jeśli nie wskażesz nazwy commitu, git stworzy tag wskazujący na ostatni commit obecnego brancha (czyli tzw. `HEAD`)"
+            ],
+            "command": "git tag v1 C1",
+            "beforeCommand": "git commit"
+          }
+        },
+        {
+          "type": "ModalAlert",
+          "options": {
+            "markdowns": [
+              "Na tym poziomie po prostu stwórz tag i potem przełącz się na tag `v1`. Zauważ, że jesteś w stanie detached `HEAD` -- jest tak ponieważ nie możesz commitować do tagu `v1`.",
+              "",
+              "Na nastepnym poziomie sprawdźimy ciekawszy przypadek użycia tagów"
+            ]
+          }
+        }
+      ]
+    },
+
   }
 };
