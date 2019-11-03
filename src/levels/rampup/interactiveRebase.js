@@ -18,7 +18,8 @@ exports.level = {
     "ru_RU": "Можно использовать либо ветки, либо относительные ссылки (HEAD~), чтобы указать цель для Rebase",
     "ja"   : "リベースする対象の指定には、ブランチ名や相対リファレンス(HEAD~)が使えます",
     "ko"   : "리베이스할 타겟으로 브랜치나 상대 참조(HEAD~)를 사용할 수 있습니다",
-    "uk"   : "ти можеш використовувати гілки чи відносні посилання (HEAD~) щоб вказувати ціль для rebase"
+    "uk"   : "ти можеш використовувати гілки чи відносні посилання (HEAD~) щоб вказувати ціль для rebase",
+    "pl"   : "możesz używać branchy lub względnych odniesień (HEAD~) to określania celu akcji rebase",
   },
   "name": {
     "en_US": "Interactive Rebase Intro",
@@ -32,7 +33,8 @@ exports.level = {
     "zh_TW": "介紹互動式的 rebase",
     "ru_RU": "Введение в интерактивный Rebase",
     "ko"   : "인터랙티브 리베이스 소개",
-    "uk"   : "Знайомство з інтерактивним rebase"
+    "uk"   : "Знайомство з інтерактивним rebase",
+    "pl"   : "Wprowadzenie do interaktywnego rebase",
   },
   "startDialog": {
     "en_US": {
@@ -814,6 +816,71 @@ exports.level = {
           }
         }
       ]
-    }
+    },
+    "pl": {
+      "childViews": [
+        {
+          "type": "ModalAlert",
+          "options": {
+            "markdowns": [
+              "## Git Interaktywny Rebase",
+              "",
+              "Git cherry-pick jest super kiedy wiesz które commity chcesz wybrać (i znasz odpowiadające im hashe) -- trudno pokonać prostotę, którą to zapewnia.",
+              "",
+              "Jednak co w sytuacji gdy nie wiesz jakie commity sa Ci potrzebne? Na szczęście git pomoże nam również w tej sytuacji! Możemy użyć do tego interaktywnego rebase -- to najlepszy sposób aby sprawdzić serię commitów które zamiaerzasz przenieść",
+              "",
+              "Przejdźmy do szczegółów..."
+            ]
+          }
+        },
+        {
+          "type": "ModalAlert",
+          "options": {
+            "markdowns": [
+              "Interaktywny rebase oznacza, że podcasz używania komendy `rebase` dodajem opcję `-i`.",
+              "",
+              "Jeśli dodasz tą opcję, git otworzy graficzny interfejs aby pokazać Ci które commity powinny być skopiowane podczas operacji rebase. Pokaże też hashe i komentarze do commitów, co pomoże nam zorientować się co jest czym.",
+              "",
+              "W \"prawdziwym\" git, graficzny interfejs oznacza otworzenie pliku w edytorze tekstu jak `vim` albo `notatnik`. Dla naszych celów, stworzyłem małe okno dialoge które będzie zachowywać się tak samo."
+            ]
+          }
+        },
+        {
+          "type": "ModalAlert",
+          "options": {
+            "markdowns": [
+              "Kiedy okno do intekratywnego rebase się otworzy, możesz zrobić 3 rzeczy:",
+              "",
+              "* Możesz zmienić kolejność comitów poprzez zmianę ich kolejności w oknie (możesz to zrobić chwytając i przenosząc myszką).",
+              "* Możesz pominąć niektóre commity. Zaprojektowaliśmy to jako przycisk, `pick` oznacza, że chcesz zachować commit, kliknięcie na przycisk zmieni napis i oznacza, że chcesz go odrzucić.",
+              "* Możesz też połaczyć kilka commitów - jest to akcja squash. Niestety nasze poziomy nie obsługują tego z kilku powodów, więc pominę szczegóły. Krótko mówiąc - squash pozwala łączyć commity.",
+              "",
+              "Super! Zobaczmy przykład."
+            ]
+          }
+        },
+        {
+          "type": "GitDemonstrationView",
+          "options": {
+            "beforeMarkdowns": [
+              "Kiedy kliknies przycisk, okno do interaktywnego rebase pojawi się. Zmień kolejność wybranych przez Ciebie commitów (albo odrzuć niektóre) i zobacz wynik!"
+            ],
+            "afterMarkdowns": [
+              "Boom! Git skopiował commity dokładnie tak jak to określiłeś w oknie"
+            ],
+            "command": "git rebase -i HEAD~4 --aboveAll",
+            "beforeCommand": "git commit; git commit; git commit; git commit"
+          }
+        },
+        {
+          "type": "ModalAlert",
+          "options": {
+            "markdowns": [
+              "Aby ukończyć ten poziom, wykonaj interakwyny rebase i osiągnij kolejność która jest w wizualizacji. Pamiętaj zawsze możesz cofnąć swoje zmiay aby poprawić pomyłki :D"
+            ]
+          }
+        }
+      ]
+    },
   }
 };
