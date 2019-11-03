@@ -25,7 +25,8 @@ exports.level = {
     "zh_CN": "只取一个提交记录",
     "zh_TW": "只取一個 commit",
     "ru_RU": "Выберем один коммит.",
-    "uk": "Вибираємо всього один коміт"
+    "uk": "Вибираємо всього один коміт",
+    "pl": "Wybranie tylko 1 commitu",
   },
   "hint": {
     "en_US": "Remember, interactive rebase or cherry-pick is your friend here",
@@ -39,7 +40,8 @@ exports.level = {
     "zh_CN": "你有两个朋友，cherry-pick 和 rebase -i",
     "zh_TW": "記住，使用互動式的 rebase 或者 cherry-pick 會很有幫助",
     "ru_RU": "Не забывай, что интерактивный rebase и cherry-pick – это твои друзья!",
-    "uk": "Не забувай, що інтерактивний rebase та cherry-pick -- це твої друзі!"
+    "uk": "Не забувай, що інтерактивний rebase та cherry-pick -- це твої друзі!",
+    "pl": "Pamiętaj, interaktywny rebase albo cherry-pick jest Twoim przyjacielem w tym zadaniu",
       },
   "startDialog": {
     "en_US": {
@@ -509,6 +511,45 @@ exports.level = {
           }
         }
       ]
-    }
+    },
+    "pl": {
+      "childViews": [
+        {
+          "type": "ModalAlert",
+          "options": {
+            "markdowns": [
+              "## Lokalna sterta commitów",
+              "",
+              "Ssytuacja podczas rozwijania oprogramowania, która często się zdarza: próbuję wyśledzić błąd, ale jest on dość nieuchwytny. Aby wspomóc moją pracę detektywistyczną, wprowadziłem kilka poleceń debugowania i kilka instrukcji wypisywania do konsoli.",
+              "",
+              "Każdą z tych instrukcji debugowania / wypisywania umieściłem w osobnych commitacg. W końcu wyśledzę błąd, naprawię go i będę się cieszyć!",
+              "",
+              "Jedynym problemem jest to, że teraz muszę połaczyć branch `bugFix` do brancha` master`. Gdybym po prostu szybko przesunął `master` w miejsce ostatniego commitu, wtedy` master` otrzymałby wszystkie moje instrukcje debugowania i wypisywania, co jest niepożądane. Musi być inny sposób ..."
+            ]
+          }
+        },
+        {
+          "type": "ModalAlert",
+          "options": {
+            "markdowns": [
+              "Musimy powiedzieć gitowi żeby skopiował tylko jeden commit. Wygląda to tak samo jak w poziomachw wcześniej - możemy użyć tych samych komend",
+              "",
+              "* `git rebase -i`",
+              "* `git cherry-pick`",
+              "",
+              "Aby osiągnąć nasz cel."
+            ]
+          }
+        },
+        {
+          "type": "ModalAlert",
+          "options": {
+            "markdowns": [
+              "To jest wyższy poziom, więc pozostawimy ci decyzję, którego polecenia chcesz użyć, ale aby ukończyć poziom, upewnij się, że `master` zawiera commit, do którego odwołuje się` bugFix`."
+            ]
+          }
+        }
+      ]
+    },
   }
 };

@@ -29,7 +29,8 @@ exports.level = {
     "zh_CN": "提交的技巧 #1",
     "zh_TW": "commit 的戲法",
     "ru_RU": "Жонглируем коммитами",
-    "uk": "Жонглюємо комітами"
+    "uk": "Жонглюємо комітами",
+    "pl": "Żonglowanie commitami",
   },
   "hint": {
     "en_US": "The first command is git rebase -i HEAD~2",
@@ -43,7 +44,8 @@ exports.level = {
     "zh_CN": "第一个命令是 `git rebase -i HEAD~2`",
     "zh_TW": "第一個命令是 'git rebase -i HEAD~2'",
     "ru_RU": "Первой командой должна быть git rebase -i HEAD~2",
-    "uk": "Перша команда має бути git rebase -i HEAD~2"
+    "uk": "Перша команда має бути git rebase -i HEAD~2",
+    "pl": "Pierwszą komendą jest git rebase -i HEAD~2",
   },
   "startDialog": {
     "en_US": {
@@ -452,6 +454,40 @@ exports.level = {
               "Зверни увагу на фінальний стан в цьому рівні -- позаяк ми перемістили коміти двічі, кожен з них отримає по апострофу. Ще один апостроф додасться коли ми виконаємо commit --amend.",
               "",
               "Враховуючи сказане вище, я буду порівнювати дерево як за назвою коміта, так і за кількістю апострофів. Щойно дерево цілей та master співпадуть, ти пройдеш цей рівень."
+            ]
+          }
+        }
+      ]
+    },
+    "pl": {
+      "childViews": [
+        {
+          "type": "ModalAlert",
+          "options": {
+            "markdowns": [
+              "## Żonglowanie commitami",
+              "",
+              "Oto kolejna sytuacja, która zdarza się dość często. Masz kilka zmian (`newImage`) i inny zestaw zmian (` caption`), które są ze sobą powiązane, więc są ułożone jeden na drugim w twoim repozytorium (lub jeden po drugim).",
+              "",
+              "Problem polega na tym, że czasami trzeba wprowadzić niewielką modyfikację wcześniejszego commitu. W tym przypadku projektant chce, abyśmy nieznacznie zmienili wymiary `newImage`, mimo że to zatwierdzenie jest już daleko w naszej historii !!"
+            ]
+          }
+        },
+        {
+          "type": "ModalAlert",
+          "options": {
+            "markdowns": [
+              "Przezwyciężymy tę trudność, wykonując następujące czynności:",
+              "",
+              "* Zmienimy kolejność commitów dzięki czemu ten który chcemy zmienić będzie na górze. Użyjemy do tego `git rebase -i`",
+              "* Uzyjemy komendy `commit --amend` aby wykonać zmianę",
+              "* Zmienimy kolejność ponownie tak, aby commity były w tej kolejności co poprzednio używając `git rebase -i`",
+              "* NA końcu, przesuniemy branch master do poprawnionego drzewa aby ukończyć poziom (metodą która ty wybierzesz)",
+              "",
+              "Jest wiele sposobów na osiągnięcie tego celu (widzę, że rzucasz okiem na cherry-pick). Później zobaczymy ich więcej, ale na razie skupmy się na tej technice.",
+              "Na koniec zwróć uwagę na tutaj cel -- ponieważ przesuwamy dwa razy commity, obaj otrzymują dołączony apostrof. Dodano jeszcze jednen apostrof dla commitu który jest przez nas zmieniony, co daje nam ostateczną formę drzewa",
+              "",
+              "Biorąc to pod uwagę, mogę teraz porównywać poziomy na podstawie struktury i względnych różnic apostrofów. Tak długo, jak branch `master` będzie miała taką samą strukturę i względne różnice apostrofów, dam ci pełne uznanie"
             ]
           }
         }
