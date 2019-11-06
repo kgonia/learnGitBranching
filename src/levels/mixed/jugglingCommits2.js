@@ -28,7 +28,8 @@ exports.level = {
     "zh_CN": "提交的技巧 #2",
     "zh_TW": "commit 的戲法 #2",
     "ru_RU": "Жонглируем коммитами №2",
-    "uk": "Жонглюємо комітами #2"
+    "uk": "Жонглюємо комітами #2",
+    "pl": "Żonglowanie commitami 2",
   },
   "hint": {
     "en_US": "Don't forget to forward master to the updated changes!",
@@ -42,7 +43,8 @@ exports.level = {
     "zh_CN": "别忘记了将 master 快进到最新的更新上！",
     "zh_TW": "別忘記了將 master 推到最新的 commit 上面！",
     "ru_RU": "Не забудь переместить master на последние изменения.",
-    "uk": "Не забудь перемістити master на останні зміни!"
+    "uk": "Не забудь перемістити master на останні зміни!",
+    "pl": "Nie zapomnij przesunąć mastera do ostatnich zmian!",
   },
   "startDialog": {
     "en_US": {
@@ -554,6 +556,49 @@ exports.level = {
           }
         }
       ]
-    }
+    },
+    "pl": {
+      "childViews": [
+        {
+          "type": "ModalAlert",
+          "options": {
+            "markdowns": [
+              "## Żonglowanie commitami 2 #2",
+              "",
+              "*Jeśli nie ukończyłeś poprzedniego poziomu - Żonglowanie commitami #1 zrób to przed kontyuacją*",
+              "",
+              "Jak miałeś okazję zobaczyć w poprzednim poziomie użyliśmy `rebase -i` aby zmienić kolejność commitów. Jeśli commit który chcieliśmy zmienić był na górze, możemy prosto wykonać --amend i zmienić kolejność do takiej jaka nam odpowiada.",
+              "",
+              "Jedynym problemem jest to, że gdy zmieniamy kolejnością dużo commitów, może to doprowadzić do konfliktów. Spójrzmy na inną sposób z użyciem `git cherry-pick`"
+            ]
+          }
+        },
+        {
+          "type": "GitDemonstrationView",
+          "options": {
+            "beforeMarkdowns": [
+              "Pamiętaj że git cherry-pick wstawi commit z dowolnego miejsca w drzewie w miejsce HEAD (dopóki ten commit nie jest przodkiem HEAD).",
+              "",
+              "Małe demo dla przypomnienia:"
+            ],
+            "afterMarkdowns": [
+              "Super! Przejzmy dalej"
+            ],
+            "command": "git cherry-pick C2",
+            "beforeCommand": "git checkout -b bugFix; git commit; git checkout master; git commit"
+          }
+        },
+        {
+          "type": "ModalAlert",
+          "options": {
+            "markdowns": [
+              "Na tym poziomie wymagamy ukończenia tego samego celu co poprzednio -- zmiany commitu `C2` ale unikając polecenia `rebase -i`. Zostawię Ci to do rozgryzienia! :D",
+              "",
+              "Pamiętaj, dokładna liczba apostrofów (') przy commicie nie jest ważna, tylko względna róznica. Na przykład, dam Ci fory, zaliczę drzewo które pasuje do naszego celu ale ma jeden dodatkowy apostrof wszędzie"
+            ]
+          }
+        }
+      ]
+    },
   }
 };

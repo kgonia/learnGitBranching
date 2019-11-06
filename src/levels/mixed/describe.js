@@ -14,7 +14,8 @@ exports.level = {
     "zh_CN": "Git Describe",
     "ru_RU": "Git describe",
     "ko"   : "Git describe(묘사)",
-    "uk"   : "Git Describe"
+    "uk"   : "Git Describe",
+    "pl"   : "Git Describe",
   },
   "hint": {
     "en_US": "Just commit once on bugFix when you're ready to move on",
@@ -28,7 +29,8 @@ exports.level = {
     "zh_CN": "当你准备好时，在 bugFix 分支上面提交一次就可以了",
     "ru_RU": "Когда закончишь, просто сделай commit",
     "ko"   : "다음으로 넘어가고 싶으면 bugFix를 한번 커밋하면 됩니다.",
-    "uk"   : "Просто зроби один коміт в bugFix коли ти будеш готовий іти далі"
+    "uk"   : "Просто зроби один коміт в bugFix коли ти будеш готовий іти далі",
+    "pl"   : "Po prostu zrób commit na bugFix kiedy będziesz gotów",
   },
   "startDialog": {
     "en_US": {
@@ -790,6 +792,69 @@ exports.level = {
           }
         }
       ]
-    }
+    },
+    "pl": {
+      "childViews": [
+        {
+          "type": "ModalAlert",
+          "options": {
+            "markdowns": [
+              "### Git Describe",
+              "",
+              "Ponieważ tagi służą jako \"kotwice\" w naszym kodzie, git ma polecenie opisujące, gdzie jesteś względem najbliższej \"kotiwcy\" (aka tag). To polecenie nazywa się `git describe`!",
+              "",
+              "Git description może pomóc ci w ustaleniu położenia po przejściu przez wiele commitów do tyłu lub do przodu w historii; To może się to zdarzyć po ukończeniu git bisect (wyszukiwanie commitow z błedem) lub podczas pracy przy komputerze współpracownika, który właśnie wrócił z wakacji."
+            ]
+          }
+        },
+        {
+          "type": "ModalAlert",
+          "options": {
+            "markdowns": [
+              "Git describe ma formę:",
+              "",
+              "`git describe <ref>`",
+              "",
+              "Gdzie `<ref>` to cokolwiek, co git może połaczyć z commitem. Jeśli nie określisz referencji, git po prostu użyje miejsca, w którym jesteś teraz (`HEAD`).",
+              "",
+              "Wynik tej komendy wygląda tak::",
+              "",
+              "`<tag>_<numCommits>_g<hash>`",
+              "",
+              "Gdzie `tag` jest najbliższym tagiem przodka w historii,` numCommits` jest liczbą commitów od tego tego tagu, a `<hash>` jest skrótem opisywanego commitu."
+            ]
+          }
+        },
+        {
+          "type": "GitDemonstrationView",
+          "options": {
+            "beforeMarkdowns": [
+              "Spójrzmy na szybki przykład. Dla tego drzewa poniżej:"
+            ],
+            "afterMarkdowns": [
+              "Komenda `git describe master` da wynik:",
+              "",
+              "`v1_2_gC2`",
+              "",
+              "Gdzie `git describe side` da wynik:",
+              "",
+              "`v2_1_gC4`"
+            ],
+            "command": "git tag v2 C3",
+            "beforeCommand": "git commit; go -b side HEAD~1; gc; gc; git tag v1 C0"
+          }
+        },
+        {
+          "type": "ModalAlert",
+          "options": {
+            "markdowns": [
+              "To prawie wysztko na temat git describe! Spróbuj opisać kilka lokalizacji w drzewie na tym poziomie, aby poznać polecenie.",
+              "",
+              "Gdy będziesz gotowy, po prostu idź dalej i zrób commit, aby ukończyć poziom. Masz wolną rękę : P"
+            ]
+          }
+        }
+      ]
+    },
   }
 };
