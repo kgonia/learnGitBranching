@@ -14,7 +14,8 @@ exports.level = {
     "zh_TW": "多個 parent commit",
     "ru_RU": "Здоровая семья, или несколько родителей",
     "ko"   : "다수의 부모",
-    'uk': 'Декілька батьків'
+    'uk': 'Декілька батьків',
+    'pl': 'Wielu rodziców',
   },
   "hint": {
     "en_US": "Use `git branch bugWork` with a target commit to create the missing reference.",
@@ -28,7 +29,8 @@ exports.level = {
     "zh_TW": "在一個指定的 commit 上面使用 `git branch bugWork`。",
     "ru_RU": "`git branch bugWork` на нужном коммите поможет создать нужную ссылку.",
     "ko"   : "`git branch bugWork`를 대상 커밋과 함께 사용해서 부족한 참조를 만드세요",
-    'uk': 'Використай "git branch bugWork" на потрібному коміті щоб створити потрібне посилання'
+    'uk': 'Використай "git branch bugWork" на потрібному коміті щоб створити потрібне посилання',
+    'pl': 'Użyj "git branch bugWork" i wskaż commit aby stworzyć brakującą referencję',
   },
   "startDialog": {
     "en_US": {
@@ -1075,6 +1077,94 @@ exports.level = {
           }
         }
       ]
-    }
+    },
+    "pl": {
+      "childViews": [
+        {
+          "type": "ModalAlert",
+          "options": {
+            "markdowns": [
+              "### Określanie rodziców",
+              "",
+              "Podobnie jak modyfikator `~`, `^` modyfikator także przyjumuje opcjonalny numer.",
+              "",
+              "Zamiast określać liczbę pokoleń, o które się cofniemy (do czego użyjemy `~` z liczbą), modyfikator `^` określa, które odwołanie nadrzędne ma być sledzone po zatwierdzeniu scalania. Pamiętaj, że commity powstałe z operacji merge mają wielu rodziców, więc ścieżka wyboru jest niejednoznaczna.",
+              "",
+              "Git zwykle podąża za \"pierwszym\" rodzicem w górę od commitu który jest mergem, ale określenie liczby za pomocą `^` zmienia to domyślne zachowanie.",
+              "",
+              "Dość gadania, zobaczmy to w akcji.",
+              ""
+            ]
+          }
+        },
+        {
+          "type": "GitDemonstrationView",
+          "options": {
+            "beforeMarkdowns": [
+              "Tutaj mamy commit powstały w wyniku merge. Jeśli pobierzemy `master^` bez modyfikatora, podążymy za pierwszym rodzicem po merge.",
+              "",
+              "(* W naszej wizualizacji pierwszy rodzic jest umieszczony bezpośrednio nad mergem. *)"
+            ],
+            "afterMarkdowns": [
+              "Proste - to jest to do czegp wszyscy jesteśmy przyzwyczajeni."
+            ],
+            "command": "git checkout master^",
+            "beforeCommand": "git checkout HEAD^; git commit; git checkout master; git merge C2"
+          }
+        },
+        {
+          "type": "GitDemonstrationView",
+          "options": {
+            "beforeMarkdowns": [
+              "Teraz spróbujmy określić drugiego rodzica..."
+            ],
+            "afterMarkdowns": [
+              "Widzisz? Podążaliśmy za drugim rodzicem w górę."
+            ],
+            "command": "git checkout master^2",
+            "beforeCommand": "git checkout HEAD^; git commit; git checkout master; git merge C2"
+          }
+        },
+        {
+          "type": "GitDemonstrationView",
+          "options": {
+            "beforeMarkdowns": [
+              "Modyfikatory `^` i `~` mogą sprawić, że poruszanie się po drzewie zatwierdzeń jest bardzo użyteczne:"
+            ],
+            "afterMarkdowns": [
+              "Szybkie jak błyskawica!"
+            ],
+            "command": "git checkout HEAD~; git checkout HEAD^2; git checkout HEAD~2",
+            "beforeCommand": "git commit; git checkout C0; git commit; git commit; git commit; git checkout master; git merge C5; git commit"
+          }
+        },
+        {
+          "type": "GitDemonstrationView",
+          "options": {
+            "beforeMarkdowns": [
+              "Zaszalejmy, te modyfikatory można łączyć ze sobą! Spójrz na to:"
+            ],
+            "afterMarkdowns": [
+              "Taki sam ruch jak poprzednio, ale wszystko w jednym poleceniu."
+            ],
+            "command": "git checkout HEAD~^2~2",
+            "beforeCommand": "git commit; git checkout C0; git commit; git commit; git commit; git checkout master; git merge C5; git commit"
+          }
+        },
+        {
+          "type": "ModalAlert",
+          "options": {
+            "markdowns": [
+              "### Przećwiczmy to",
+              "",
+              "Aby ukończyć ten poziom, utwórz nowy branch w określonym miejscu.",
+              "",
+              "Oczywiście byłoby łatwo określić bezpośrednio commit (za pomocą czegoś takiego jak `C6`), ale zachęcam cię do użycia modyfikatorów, o których mówiliśmy!"
+            ]
+          }
+        }
+      ]
+    },
+
   }
 };

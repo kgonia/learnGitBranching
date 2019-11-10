@@ -18,7 +18,8 @@ exports.level = {
     "zh_CN": "纠缠不清的分支",
     "zh_TW": "branch 漿糊",
     "ru_RU": "Спутанные ветки",
-    "uk"   : "Макарони з гілок"
+    "uk"   : "Макарони з гілок",
+    "pl"   : "Branch Spaghetti",
   },
   "hint": {
     "en_US": "Make sure to do everything in the proper order! Branch one first, then two, then three",
@@ -32,7 +33,8 @@ exports.level = {
     "zh_CN": "确保你是按照正确的顺序来操作！先操作分支 `one`, 然后 `two`, 最后才是 `three`",
     "zh_TW": "確認你是按照正確的順序來操作！先操作 branch  `one`, 然後 `two`, 最後才是 `three`",
     "ru_RU": "Убедись, что у нас всё по порядку! Сначала ветка `one`, потом `two` и только потом `three`",
-    "uk":    "Переконайся, що все йде за порядком! Спершу гілка `one`, потім `two`, і тільки потім `three`"
+    "uk":    "Переконайся, що все йде за порядком! Спершу гілка `one`, потім `two`, і тільки потім `three`",
+      "pl": "Upewnij się, że wszystko robisz w odpowiedniej kolejności! Najpierw pierwszy branch, potem drugi, potem trzeci",
   },
   "startDialog": {
     "en_US": {
@@ -274,6 +276,26 @@ exports.level = {
           }
         }
       ]
-    }
+    },
+    "pl": {
+      "childViews": [
+        {
+          "type": "ModalAlert",
+          "options": {
+            "markdowns": [
+              "## Branch Spaghetti",
+              "",
+              "Łuhu! Mamy duży cel do osiągnięcia na tym poziomie",
+              "",
+              "Mamy tutaj branch `master`, który jest kilka commitów przed branchami `one` `two` i `three`. Z jakiegoś powodu musimy zaktualizować te trzy inne branche zmodyfikowanymi wersjami ostatnich kilku commitów z mastera.",
+              "",
+              "Branch „one” wymaga zmiany kolejności i usunięcia „C5”. „two” wymaga ponownego uporządkowania, a „trzy” potrzebuje tylko jednego commitu!",
+              "",
+              "Pozwolimy Ci dowiedzieć się, jak rozwiązać ten problem - po wszystkim koniecznie sprawdź nasze rozwiązanie za pomocą `show solution`."
+            ]
+          }
+        }
+      ]
+    },
   }
 };

@@ -19,7 +19,8 @@ exports.level = {
     "zh_CN": "多次 Rebase",
     "zh_TW": "N次Rebase",
     "ru_RU": "Rebase over 9000 раз",
-    "uk"   : "Rebase over 9000 разів"
+    "uk"   : "Rebase over 9000 разів",
+    "pl"   : "Rebase 9000 razy",
   },
   "hint": {
     "en_US": "Remember, the most efficient way might be to only update master at the end...",
@@ -33,7 +34,8 @@ exports.level = {
     "zh_CN": "记住，最后更新 master 分支可能是最高效的方法……",
     "zh_TW": "要記住喔! 把 master branch 留到最後更新可能是最有效率的方法。",
     "ru_RU": "Не забудь, что лучше всего сдвинуть мастер в самом конце...",
-    "uk"   : "Не забувай, що краще всього буде перемістити master в самому кінці... "
+    "uk"   : "Не забувай, що краще всього буде перемістити master в самому кінці... ",
+    "pl"   : "Pamiętaj, że najskuteczniejszym sposobem może być tylko aktualizacja brancha master na końcu ...",
   },
   "startDialog": {
     "en_US": {
@@ -247,6 +249,24 @@ exports.level = {
               "Але вище керівництво нам не полегшує життя -- вони хочуть, щоб всі коміти були впорядковані. Це означає, що в результаті коміт `C7'` має бути з самого низу, `C6'` трохи вище, і так далі, все за порядком.",
               "",
               "Якщо ти щось зробиш не так, сміливо використовуй `reset` щоб почати спочатку. Подивись на наш розв’язок і подумай, чи ти можеш обійтись меншою кількістю команд!"
+            ]
+          }
+        }
+      ]
+    },
+    "pl": {
+      "childViews": [
+        {
+          "type": "ModalAlert",
+          "options": {
+            "markdowns": [
+              "### Rebasing Multiple Branches",
+              "",
+              "Człowieku, mamy tu wiele branchy! Zbierzmy całą pracę z tych branchy na master.",
+              "",
+              "Wyższe kierownictwo sprawia, że jest to nieco trudniejsze - chcą, aby wszystkie zatwierdzenia były w kolejności sekwencyjnej. Oznacza to, że nasze ostatnie drzewo powinno mieć „C7” na dole, „C6” powyżej i tak dalej, wszystko w kolejności.",
+              "",
+              "Jeśli zrobisz bałagan po drodze, możesz użyć polecenia „reset”, aby zacząć od nowa. Sprawdź nasze rozwiązanie i zobacz, czy możesz to zrobić za pomocą mniejszej liczby poleceń!"
             ]
           }
         }
